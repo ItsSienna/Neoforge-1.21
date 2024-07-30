@@ -11,14 +11,16 @@ import net.sienna.mccourse.item.custom.FuelItem;
 import net.sienna.mccourse.item.custom.MetalDetectorItem;
 
 import static net.sienna.mccourse.MCCourseMod.MOD_ID;
-
-//TO CREATE A NEW ITEM:
-//First, add the RegistryObject<Item> in the ModItems class (with all the item properties you may want)
-//Then, add it to a creative tab in the main class
-//Then, set its language translation in lang/en_us.json (eg mccourse.item.alexandrite becomes "Alexandrite"
-//Then, create its model/item file with appropriate parents and a link to its texture file
-//Then, put its .png file into textures/item (and make sure it is named the same as the model/item entry
-
+/*
+TO CREATE A NEW ITEM
+1. Create a DeferredItem<Item> below. Use registerSimpleItem with new Item for a basic item, or just register for a custom item.
+2. Add it to the creative mode tab (I have it in the item folder, it should really be in its own package
+3. Set a language translation in ModLangProvider
+5. Set its recipe in ModRecipeProvider
+6. Set any tags it may have (valuable tag, ore tag, etc)
+7. Create a texture and put it in textures/item in resources
+8. Use ModItemStateProvider to point the item to its texture (and saying whether its generated like regular items, or a tool like swords, or a custom model
+ */
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
     // Deferred register is a class that is a LIST OF ITEMS that are going to be registered at a certain moment in time when the mod is ready for them.
