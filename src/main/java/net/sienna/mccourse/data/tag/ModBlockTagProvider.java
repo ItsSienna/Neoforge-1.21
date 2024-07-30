@@ -26,14 +26,26 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get())
                 .add(ModBlocks.NETHER_ALEXANDRITE_ORE.get())
                 .add(ModBlocks.END_STONE_ALEXANDRITE_ORE.get())
-                .add(ModBlocks.RAW_ALEXANDRITE_BLOCK.get());
+                .add(ModBlocks.RAW_ALEXANDRITE_BLOCK.get())
+                .add(ModBlocks.ALEXANDRITE_STAIRS.get())
+                .add(ModBlocks.ALEXANDRITE_SLAB.get());
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.ALEXANDRITE_BLOCK.get())
                 .add(ModBlocks.ALEXANDRITE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get())
                 .add(ModBlocks.NETHER_ALEXANDRITE_ORE.get())
                 .add(ModBlocks.END_STONE_ALEXANDRITE_ORE.get())
-                .add(ModBlocks.RAW_ALEXANDRITE_BLOCK.get());
+                .add(ModBlocks.RAW_ALEXANDRITE_BLOCK.get())
+                .add(ModBlocks.ALEXANDRITE_STAIRS.get())
+                .add(ModBlocks.ALEXANDRITE_SLAB.get())
+                .add(ModBlocks.ALEXANDRITE_BUTTON.get())
+                .add(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get())
+                .add(ModBlocks.ALEXANDRITE_FENCE_GATE.get())
+                .add(ModBlocks.ALEXANDRITE_FENCE.get())
+                .add(ModBlocks.ALEXANDRITE_WALL.get())
+                .add(ModBlocks.ALEXANDRITE_DOOR.get())
+                .add(ModBlocks.ALEXANDRITE_TRAPDOOR.get());
 
         tag(ModTags.Blocks.METAL_DETECTOR_VALUABLES)
                 .add(Blocks.DIAMOND_ORE)
@@ -54,6 +66,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.DEEPSLATE_COAL_ORE)
                 .add(Blocks.DEEPSLATE_COPPER_ORE)
                 .add(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get());
+
+        //These tags help the fences and walls connect to each other properly! I didn't need to do this for buttons (even though there is a tag for it), but I definitely can (and should!)!
+        tag(BlockTags.FENCES)
+                .add(ModBlocks.ALEXANDRITE_FENCE.get());
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.ALEXANDRITE_WALL.get());
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
 
     }
 }

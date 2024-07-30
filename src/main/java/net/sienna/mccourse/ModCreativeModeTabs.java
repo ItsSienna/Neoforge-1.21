@@ -1,15 +1,13 @@
-package net.sienna.mccourse.item;
+package net.sienna.mccourse;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
+import net.sienna.mccourse.item.ModItems;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MCCourseMod.MOD_ID);
@@ -41,6 +39,15 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.NETHER_ALEXANDRITE_ORE.get());
                 output.accept(ModBlocks.END_STONE_ALEXANDRITE_ORE.get());
                 output.accept(ModBlocks.SOUND_BLOCK.get());// Add the example item to the tab
+                output.accept(ModBlocks.ALEXANDRITE_STAIRS.get());
+                output.accept(ModBlocks.ALEXANDRITE_SLAB.get());
+                output.accept(ModBlocks.ALEXANDRITE_BUTTON.get());
+                output.accept(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get());
+                output.accept(ModBlocks.ALEXANDRITE_FENCE.get());
+                output.accept(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
+                output.accept(ModBlocks.ALEXANDRITE_WALL.get());
+                output.accept(ModBlocks.ALEXANDRITE_DOOR.get());
+                output.accept(ModBlocks.ALEXANDRITE_TRAPDOOR.get());
             }).build());
 
 }

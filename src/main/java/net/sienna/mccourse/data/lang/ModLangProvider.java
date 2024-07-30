@@ -4,7 +4,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
-import net.sienna.mccourse.item.ModCreativeModeTabs;
+import net.sienna.mccourse.ModCreativeModeTabs;
 import net.sienna.mccourse.item.ModItems;
 
 public class ModLangProvider extends LanguageProvider {
@@ -30,6 +30,15 @@ public class ModLangProvider extends LanguageProvider {
         addBlock(ModBlocks.NETHER_ALEXANDRITE_ORE, "Nether Alexandrite Ore");
         addBlock(ModBlocks.END_STONE_ALEXANDRITE_ORE, "End Stone Alexandrite Ore");
         addBlock(ModBlocks.SOUND_BLOCK, "Sound Block");
+        addBlock(ModBlocks.ALEXANDRITE_STAIRS, "Alexandrite Stairs");
+        addBlock(ModBlocks.ALEXANDRITE_SLAB, "Alexandrite Slab");
+        addBlock(ModBlocks.ALEXANDRITE_BUTTON, "Alexandrite Button");
+        addBlock(ModBlocks.ALEXANDRITE_PRESSURE_PLATE, "Alexandrite Pressure Plate");
+        addBlock(ModBlocks.ALEXANDRITE_FENCE, "Alexandrite Fence");
+        addBlock(ModBlocks.ALEXANDRITE_FENCE_GATE, "Alexandrite Fence Gate");
+        addBlock(ModBlocks.ALEXANDRITE_WALL, "Alexandrite Wall");
+        addBlock(ModBlocks.ALEXANDRITE_DOOR, "Alexandrite Door");
+        addBlock(ModBlocks.ALEXANDRITE_TRAPDOOR, "Alexandrite Trapdoor");
 
         //Creative mode menu
         add(ModCreativeModeTabs.modcourse_creative_mode_blocks, "Mod Course Blocks");

@@ -5,6 +5,15 @@
     "mccourse:deepslate_alexandrite_ore",
     "mccourse:nether_alexandrite_ore",
     "mccourse:end_stone_alexandrite_ore",
-    "mccourse:raw_alexandrite_block"
+    "mccourse:raw_alexandrite_block",
+    "mccourse:alexandrite_stairs",
+    "mccourse:alexandrite_slab",
+    "mccourse:alexandrite_button",
+    "mccourse:alexandrite_pressure_plate",
+    "mccourse:alexandrite_fence_gate",
+    "mccourse:alexandrite_fence",
+    "mccourse:alexandrite_wall",
+    "mccourse:alexandrite_door",
+    "mccourse:alexandrite_trapdoor"
   ]
 }

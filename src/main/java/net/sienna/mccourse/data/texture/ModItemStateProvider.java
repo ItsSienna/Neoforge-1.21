@@ -2,10 +2,16 @@ package net.sienna.mccourse.data.texture;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.sienna.mccourse.MCCourseMod;
+import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.item.ModItems;
 
 public class ModItemStateProvider extends ItemModelProvider {
@@ -21,6 +27,14 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ModItems.METAL_DETECTOR.get());
         item(ModItems.KOHLRABI.get());
         item(ModItems.PEAT_BRICK.get());
+
+        //Buttons, fences and walls! I've created a custom method for this - it looks different to Kaupenjoe's because 1.21 made ResourceLocation private, so you have to work around it.
+        buttomItem(ModBlocks.ALEXANDRITE_BUTTON.get(), ModBlocks.ALEXANDRITE_BLOCK.get());
+        fenceItem(ModBlocks.ALEXANDRITE_FENCE.get(), ModBlocks.ALEXANDRITE_BLOCK.get());
+        wallItem(ModBlocks.ALEXANDRITE_WALL.get(), ModBlocks.ALEXANDRITE_BLOCK.get());
+
+        //God damn doors need a special thing too. Except they're flat in the inventory, so they take the item/generated location
+        blockItem(ModBlocks.ALEXANDRITE_DOOR.get());
     }
 
     private void item(Item item) { //Tells the game where to find the item texture, and also what kind of item they are (item/generated is just regular item, not like a sword)
@@ -29,8 +43,37 @@ public class ModItemStateProvider extends ItemModelProvider {
                 .parent(getExistingFile(mcLoc("item/generated")))
                 .texture("layer0", "item/" + name);
     }
+    private void blockItem(Block block) { //Tells the game where to find the item texture, and also what kind of item they are (item/generated is just regular item, not like a sword)
+        String name = getItemName(block);
+        getBuilder(name)
+                .parent(getExistingFile(mcLoc("item/generated")))
+                .texture("layer0", "item/" + name);
+    }
 
     private String getItemName(Item item) {
         return BuiltInRegistries.ITEM.getKey(item).toString().replace(MCCourseMod.MOD_ID + ":","");
+    }
+    private String getItemName(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block).toString().replace(MCCourseMod.MOD_ID + ":","");
+    }
+
+    //Here's the weird methods needed to make buttons, gates and walls work, owing to how different they look when placed down in different ways.
+    public void buttomItem(Block block, Block baseBlock) {
+        ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKey(block);
+        ResourceLocation baseBlockKey = BuiltInRegistries.BLOCK.getKey(baseBlock);
+        this.withExistingParent(blockKey.getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", "block/" + baseBlockKey.getPath());
+    }
+    public void fenceItem(Block block, Block baseBlock) {
+        ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKey(block);
+        ResourceLocation baseBlockKey = BuiltInRegistries.BLOCK.getKey(baseBlock);
+        this.withExistingParent(blockKey.getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture", "block/" + baseBlockKey.getPath());
+    }
+    public void wallItem(Block block, Block baseBlock) {
+        ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKey(block);
+        ResourceLocation baseBlockKey = BuiltInRegistries.BLOCK.getKey(baseBlock);
+        this.withExistingParent(blockKey.getPath(), mcLoc("block/wall_inventory"))
+                .texture("wall", "block/" + baseBlockKey.getPath());
     }
 }

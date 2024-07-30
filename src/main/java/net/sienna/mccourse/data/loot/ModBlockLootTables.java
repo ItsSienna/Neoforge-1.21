@@ -25,10 +25,22 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.ALEXANDRITE_BLOCK.get());
         dropSelf(ModBlocks.SOUND_BLOCK.get());
         dropSelf(ModBlocks.RAW_ALEXANDRITE_BLOCK.get());
+        dropSelf(ModBlocks.ALEXANDRITE_STAIRS.get());
+        dropSelf(ModBlocks.ALEXANDRITE_BUTTON.get());
+        dropSelf(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
+        dropSelf(ModBlocks.ALEXANDRITE_FENCE.get());
+        dropSelf(ModBlocks.ALEXANDRITE_WALL.get());
+        dropSelf(ModBlocks.ALEXANDRITE_TRAPDOOR.get());
+
         add(ModBlocks.ALEXANDRITE_ORE.get(), createOreDrop(ModBlocks.ALEXANDRITE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
         add(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get(), createOreDrop(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
         add(ModBlocks.NETHER_ALEXANDRITE_ORE.get(), createOreDrop(ModBlocks.NETHER_ALEXANDRITE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
         add(ModBlocks.END_STONE_ALEXANDRITE_ORE.get(), createOreDrop(ModBlocks.END_STONE_ALEXANDRITE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
+        add(ModBlocks.ALEXANDRITE_DOOR.get(), createDoorTable(ModBlocks.ALEXANDRITE_DOOR.get()));
+
+        //Slabs get custom behaviour, because of course they do
+        add(ModBlocks.ALEXANDRITE_SLAB.get(), createSlabItemTable(ModBlocks.ALEXANDRITE_SLAB.get()));
     }
 
     @Override //This allows us to add all the mod-specific blocks to the block set used in the super
