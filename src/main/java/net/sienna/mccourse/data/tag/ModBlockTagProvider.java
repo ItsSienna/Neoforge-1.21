@@ -4,10 +4,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
+import net.sienna.mccourse.item.ModItems;
 import net.sienna.mccourse.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
@@ -66,6 +68,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.DEEPSLATE_COAL_ORE)
                 .add(Blocks.DEEPSLATE_COPPER_ORE)
                 .add(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get());
+
+        tag(ModTags.Blocks.PAXEL_MINEABLE)
+                .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .addTag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(BlockTags.MINEABLE_WITH_HOE);
 
         //These tags help the fences and walls connect to each other properly! I didn't need to do this for buttons (even though there is a tag for it), but I definitely can (and should!)!
         tag(BlockTags.FENCES)

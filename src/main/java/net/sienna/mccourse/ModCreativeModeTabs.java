@@ -25,7 +25,20 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.RAW_ALEXANDRITE.get());
                 output.accept(ModItems.METAL_DETECTOR.get());
                 output.accept(ModItems.KOHLRABI.get());
-                output.accept(ModItems.PEAT_BRICK.get());// Add the example item to the tab
+                output.accept(ModItems.PEAT_BRICK.get());
+                output.accept(ModItems.ALEXANDRITE_SWORD.get());
+                output.accept(ModItems.ALEXANDRITE_PICKAXE.get());
+                output.accept(ModItems.ALEXANDRITE_SHOVEL.get());
+                output.accept(ModItems.ALEXANDRITE_AXE.get());
+                output.accept(ModItems.ALEXANDRITE_HOE.get());
+                output.accept(ModItems.ALEXANDRITE_PAXEL.get());
+                output.accept(ModItems.ALEXANDRITE_HAMMER.get());
+                output.accept(ModItems.SLOWING_SWORD.get());
+                output.accept(ModItems.ALEXANDRITE_BOOTS.get());
+                output.accept(ModItems.ALEXANDRITE_HELMET.get());
+                output.accept(ModItems.ALEXANDRITE_CHESTPLATE.get());
+                output.accept(ModItems.ALEXANDRITE_LEGGINGS.get());
+                output.accept(ModItems.ALEXANDRITE_HORSE_ARMOR.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MODCOURSE_BLOCKS = CREATIVE_MODE_TABS.register(modcourse_creative_mode_blocks, () -> CreativeModeTab.builder()

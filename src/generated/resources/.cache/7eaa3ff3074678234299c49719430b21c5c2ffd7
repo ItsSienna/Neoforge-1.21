@@ -1,5 +1,6 @@
-// 1.21	2024-07-30T18:00:04.0396504	Tags for minecraft:block mod id mccourse
+// 1.21	2024-07-30T23:47:58.2291479	Tags for minecraft:block mod id mccourse
 d5363ea67576d6fa1db9051223288acbecee4aff data/mccourse/tags/block/metal_detector_valuables.json
+dd69a7d922d78c79f669bd41976200b9b52c6bee data/mccourse/tags/block/mineable/paxel.json
 43b621c9e36eb4c7ee0e97ecc2dd841d090c7821 data/minecraft/tags/block/fences.json
 c019d56ddaf7b3dec0cca0ef234845dd8a1007a7 data/minecraft/tags/block/fence_gates.json
 543573690f352de161a6b897615d0ade25a89534 data/minecraft/tags/block/mineable/pickaxe.json

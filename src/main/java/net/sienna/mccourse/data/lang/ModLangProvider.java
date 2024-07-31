@@ -21,6 +21,19 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.METAL_DETECTOR, "Metal Detector");
         addItem(ModItems.PEAT_BRICK, "Peat Brick");
         addItem(ModItems.KOHLRABI, "Kohlrabi");
+        addItem(ModItems.ALEXANDRITE_SWORD, "Alexandrite Sword");
+        addItem(ModItems.ALEXANDRITE_PICKAXE, "Alexandrite Pickaxe");
+        addItem(ModItems.ALEXANDRITE_AXE, "Alexandrite Axe");
+        addItem(ModItems.ALEXANDRITE_SHOVEL, "Alexandrite Shovel");
+        addItem(ModItems.ALEXANDRITE_HOE, "Alexandrite Hoe");
+        addItem(ModItems.ALEXANDRITE_PAXEL, "Alexandrite Paxel");
+        addItem(ModItems.ALEXANDRITE_HAMMER, "Alexandrite Hammer");
+        addItem(ModItems.SLOWING_SWORD, "Slowing Sword");
+        addItem(ModItems.ALEXANDRITE_HELMET, "Alexandrite Helmet");
+        addItem(ModItems.ALEXANDRITE_CHESTPLATE, "Alexandrite Chestplate");
+        addItem(ModItems.ALEXANDRITE_LEGGINGS, "Alexandrite Leggings");
+        addItem(ModItems.ALEXANDRITE_BOOTS, "Alexandrite Boots");
+        addItem(ModItems.ALEXANDRITE_HORSE_ARMOR, "Alexandrite Horse Armour");
 
         //Blocks
         addBlock(ModBlocks.ALEXANDRITE_BLOCK, "Alexandrite Block");

@@ -17,6 +17,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.data.DataGenerators;
+import net.sienna.mccourse.item.ModArmorMaterials;
 import net.sienna.mccourse.item.ModItems;
 import org.slf4j.Logger;
 
@@ -42,7 +43,9 @@ public class MCCourseMod {
         ModBlocks.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTabs.register(modEventBus);
-
+        // Register the Deferred Register to the mod event bus so armour materials get registered
+        // This took me like ten minutes to figure out... ARMOUR MATERIALS HAVE TO BE REGISTERED!
+        ModArmorMaterials.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
