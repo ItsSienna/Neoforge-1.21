@@ -24,6 +24,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ALEXANDRITE_CHESTPLATE.get())
                 .add(ModItems.ALEXANDRITE_LEGGINGS.get())
                 .add(ModItems.ALEXANDRITE_BOOTS.get());
-
+        tag(ItemTags.FOOT_ARMOR_ENCHANTABLE)
+                .add(ModItems.ALEXANDRITE_BOOTS.get());
+        tag(ItemTags.CHEST_ARMOR_ENCHANTABLE)
+                .add(ModItems.ALEXANDRITE_CHESTPLATE.get());
     }
 }

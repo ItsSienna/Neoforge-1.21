@@ -11,6 +11,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.sienna.mccourse.block.custom.AlexandriteLampBlock;
+import net.sienna.mccourse.block.custom.KohlrabiCropBlock;
 import net.sienna.mccourse.block.custom.SoundBlock;
 import net.sienna.mccourse.item.ModItems;
 
@@ -28,6 +30,17 @@ TO CREATE A NEW BLOCK
 7. Create a texture and put it in textures/block in resources
 8. Use ModBlockStateProvider to point the block to its texture (and saying whether its a normal cube or something more complicated like stairs
 9. IF required, use ModItemStateProvider to add inventory models for blocks - eg, buttons, fences, walls
+ */
+
+/*
+What's the difference between a block and a blockstate?
+Blocks are the general idea of a block - eg, our alexandrite block is considered a block.
+A blockstate is the moment a block is placed in the world and "exists" - you can't get level/position information from a block, because they are just the idea of a block,
+but you can get a position from a blockstate.
+The best example of this is the redstone ore! It has two different states - powered and unpowered. When it's hit, it shifts state into its powered variant.
+The redstone ore has a booleanproperty associated with it - whether it's lit or not. This is independent for each individual blockstate.
+Note: BooleanProperty, NOT boolean. A boolean would be true for every copy of that class (eg every redstone ore would be lit).
+TL;DR: Three of a block placed in the world are the same block, but different blockstates.
  */
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MOD_ID);
@@ -65,4 +78,15 @@ public class ModBlocks {
     public static final DeferredBlock<Block> ALEXANDRITE_TRAPDOOR = registerBlock("alexandrite_trapdoor", () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_TRAPDOOR)));
     //Custom block!
     public static final DeferredBlock<Block> SOUND_BLOCK = registerBlock("sound_block",() -> new SoundBlock(Block.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
+
+    //Lamp! This has two blockstates. One lights up, one does not.
+    //The datagen for this is cool - we need to account for two separate blockstates.
+    public static final DeferredBlock<Block> ALEXANDRITE_LAMP = registerBlock("alexandrite_lamp",() -> new AlexandriteLampBlock(Block.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(
+            state -> state.getValue(AlexandriteLampBlock.CLICKED) ? 15 : 0
+            //A ternary!! Basically, if true, return 15, if not, return 0.
+    )));
+    //Crops! We don't do registerBlock, we use BLOCKS.register (above) because it doesn't have an item associated with it.
+    public static final DeferredBlock<Block> KOHLRABI_CROP = BLOCKS.register("kohlrabi_crop", () -> new KohlrabiCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+
+
 }

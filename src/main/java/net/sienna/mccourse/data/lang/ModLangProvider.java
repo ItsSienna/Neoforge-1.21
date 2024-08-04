@@ -34,6 +34,7 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.ALEXANDRITE_LEGGINGS, "Alexandrite Leggings");
         addItem(ModItems.ALEXANDRITE_BOOTS, "Alexandrite Boots");
         addItem(ModItems.ALEXANDRITE_HORSE_ARMOR, "Alexandrite Horse Armour");
+        addItem(ModItems.KOHLRABI_SEEDS, "Kohlrabi Seeds");
 
         //Blocks
         addBlock(ModBlocks.ALEXANDRITE_BLOCK, "Alexandrite Block");
@@ -52,6 +53,8 @@ public class ModLangProvider extends LanguageProvider {
         addBlock(ModBlocks.ALEXANDRITE_WALL, "Alexandrite Wall");
         addBlock(ModBlocks.ALEXANDRITE_DOOR, "Alexandrite Door");
         addBlock(ModBlocks.ALEXANDRITE_TRAPDOOR, "Alexandrite Trapdoor");
+        addBlock(ModBlocks.ALEXANDRITE_LAMP, "Alexandrite Lamp");
+
 
         //Creative mode menu
         add(ModCreativeModeTabs.modcourse_creative_mode_blocks, "Mod Course Blocks");

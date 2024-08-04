@@ -35,6 +35,7 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ModItems.METAL_DETECTOR.get());
         item(ModItems.KOHLRABI.get());
         item(ModItems.PEAT_BRICK.get());
+        item(ModItems.KOHLRABI_SEEDS.get());
 
         //There is no way to data-gen .json files for held trimmed armour, and I'm way too fucking lazy to edit 44 file names individually lol
         //Check the lectures if you wanna see the pain

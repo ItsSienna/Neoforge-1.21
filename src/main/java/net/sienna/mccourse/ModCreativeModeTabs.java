@@ -39,6 +39,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.ALEXANDRITE_CHESTPLATE.get());
                 output.accept(ModItems.ALEXANDRITE_LEGGINGS.get());
                 output.accept(ModItems.ALEXANDRITE_HORSE_ARMOR.get());
+                output.accept(ModItems.KOHLRABI_SEEDS.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MODCOURSE_BLOCKS = CREATIVE_MODE_TABS.register(modcourse_creative_mode_blocks, () -> CreativeModeTab.builder()
@@ -61,6 +62,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.ALEXANDRITE_WALL.get());
                 output.accept(ModBlocks.ALEXANDRITE_DOOR.get());
                 output.accept(ModBlocks.ALEXANDRITE_TRAPDOOR.get());
+                output.accept(ModBlocks.ALEXANDRITE_LAMP.get());
             }).build());
 
 }

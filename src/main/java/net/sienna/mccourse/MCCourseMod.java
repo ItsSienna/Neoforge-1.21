@@ -46,11 +46,9 @@ public class MCCourseMod {
         // Register the Deferred Register to the mod event bus so armour materials get registered
         // This took me like ten minutes to figure out... ARMOUR MATERIALS HAVE TO BE REGISTERED!
         ModArmorMaterials.register(modEventBus);
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
 
+        //ModEnchantments.register(modEventBus);
+        NeoForge.EVENT_BUS.register(this);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

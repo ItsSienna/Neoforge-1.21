@@ -3,10 +3,10 @@ package net.sienna.mccourse.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.sienna.mccourse.MCCourseMod;
-import net.sienna.mccourse.data.enchantment.ModEnchantmentTagProvider;
 import net.sienna.mccourse.data.lang.ModLangProvider;
 import net.sienna.mccourse.data.loot.ModLootTables;
 import net.sienna.mccourse.data.recipe.ModRecipeProvider;
@@ -14,6 +14,10 @@ import net.sienna.mccourse.data.tag.ModBlockTagProvider;
 import net.sienna.mccourse.data.tag.ModItemTagProvider;
 import net.sienna.mccourse.data.texture.ModBlockStateProvider;
 import net.sienna.mccourse.data.texture.ModItemStateProvider;
+import net.sienna.mccourse.enchantment.ModEnchantments;
+
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class DataGenerators {
 
@@ -41,7 +45,5 @@ public class DataGenerators {
             //Recipes generator
             generator.addProvider(true, new ModRecipeProvider(output, event.getLookupProvider()));
 
-            //Enchantments generator
-            generator.addProvider(true, new ModEnchantmentTagProvider(output, event.getLookupProvider(), existingFileHelper));
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.item.custom.*;
 
 import static net.sienna.mccourse.MCCourseMod.MOD_ID;
@@ -18,6 +19,12 @@ TO CREATE A NEW ITEM
 7. Create a texture and put it in textures/item in resources
 8. Use ModItemStateProvider to point the item to its texture (and saying whether its generated like regular items, or a tool like swords, or a custom model
  */
+
+/*
+Difference between an ITEM and an ITEMSTACK is similar to Blocks vs BlockStates.
+If you and a friend have an iron sword, they are the same ITEM, but they are different ITEMSTACKS, because they're different iterations of the same item.
+That's why when one takes damage, the other does not.
+ */
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
     // Deferred register is a class that is a LIST OF ITEMS that are going to be registered at a certain moment in time when the mod is ready for them.
@@ -27,8 +34,8 @@ public class ModItems {
         //This actually registers the items and has to be called in the main class
     }
     //Simple items can be written like this
-    public static final DeferredItem<Item> ALEXANDRITE = ITEMS.registerSimpleItem("alexandrite", new Item.Properties());
-    public static final DeferredItem<Item> RAW_ALEXANDRITE = ITEMS.registerSimpleItem("raw_alexandrite", new Item.Properties());
+    public static final DeferredItem<Item> ALEXANDRITE = ITEMS.registerSimpleItem("alexandrite");
+    public static final DeferredItem<Item> RAW_ALEXANDRITE = ITEMS.registerSimpleItem("raw_alexandrite");
     public static final DeferredItem<Item> KOHLRABI = ITEMS.registerSimpleItem("kohlrabi", new Item.Properties().food(ModFoodProperties.KOHLRABI));
 
     //Complex items and fuels should be written like this
@@ -60,5 +67,8 @@ public class ModItems {
     //This is so weird. So, I originally thought that I would have to define a model for the horse armor and point it to the right texture.
     //Turns out, the BodyType.EQUESTRIAN hard-codes the model pointer into it (it points to textures/entity/horse/armor), and looks for a texture called "horse_armor_MATERIAL.png" on its own. Neat!
     public static final DeferredItem<Item> ALEXANDRITE_HORSE_ARMOR = ITEMS.register("alexandrite_horse_armor", () -> new AnimalArmorItem(ModArmorMaterials.ALEXANDRITE, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties()));
+
+    //"ItemNameBlockItem" is a blockitem (ie seeds) with a specific item name (ie kohlrabi seeds)
+    public static final DeferredItem<Item> KOHLRABI_SEEDS = ITEMS.register("kohlrabi_seeds", () -> new ItemNameBlockItem(ModBlocks.KOHLRABI_CROP.get(), new Item.Properties()));
 
 }
