@@ -1,26 +1,23 @@
 package net.sienna.mccourse.data.texture;
 
-import com.ibm.icu.impl.data.HolidayBundle_ja_JP;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.armortrim.TrimMaterial;
-import net.minecraft.world.item.armortrim.TrimMaterials;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
+import net.sienna.mccourse.fluid.ModFluids;
 import net.sienna.mccourse.item.ModItems;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
+//IMPORTANT
+//ResourceLocation is now private. The best way to point to a model that is saved in your MOD FOLDER (NOT MINECRAFT!) is to use
+//ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, name)
+//If you do mcLoc, it looks in the MINECRAFT folder, NOT YOUR MOD FOLDER.
 public class ModItemStateProvider extends ItemModelProvider {
 
     public ModItemStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -36,6 +33,10 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ModItems.KOHLRABI.get());
         item(ModItems.PEAT_BRICK.get());
         item(ModItems.KOHLRABI_SEEDS.get());
+        item(ModFluids.SOAP_WATER_BUCKET.get());
+        item(ModItems.WALNUT_SIGN.get());
+        item(ModItems.WALNUT_HANGING_SIGN.get());
+
 
         //There is no way to data-gen .json files for held trimmed armour, and I'm way too fucking lazy to edit 44 file names individually lol
         //Check the lectures if you wanna see the pain
@@ -44,6 +45,7 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ModItems.ALEXANDRITE_LEGGINGS.get());
         item(ModItems.ALEXANDRITE_BOOTS.get());
         item(ModItems.ALEXANDRITE_HORSE_ARMOR.get());
+        item(ModItems.BAR_BRAWL_RECORD.get());
 
 
         //Handheld items
@@ -63,6 +65,15 @@ public class ModItemStateProvider extends ItemModelProvider {
 
         //God damn doors need a special thing too. Except they're flat in the inventory, so they take the item/generated location
         blockItem(ModBlocks.ALEXANDRITE_DOOR.get());
+
+        //Flowers are also flat in the inventory
+        blockItem(ModBlocks.SNAPDRAGON.get());
+
+        //Complex model method
+        complexBlock(ModBlocks.GEM_EMPOWERING_STATION.get());
+
+        //Sapling
+        saplingItem(ModBlocks.WALNUT_SAPLING);
     }
 
     private void trimmedArmour(Item item) {
@@ -116,5 +127,15 @@ public class ModItemStateProvider extends ItemModelProvider {
         ResourceLocation baseBlockKey = BuiltInRegistries.BLOCK.getKey(baseBlock);
         this.withExistingParent(blockKey.getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall", "block/" + baseBlockKey.getPath());
+    }
+
+    public ItemModelBuilder complexBlock(Block block) {
+        return withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath(),
+                ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath()));
+    }
+
+    public ItemModelBuilder saplingItem(DeferredBlock block) {
+        return withExistingParent(block.getId().getPath(),
+                mcLoc("item/generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "block/" + block.getId().getPath()));
     }
 }

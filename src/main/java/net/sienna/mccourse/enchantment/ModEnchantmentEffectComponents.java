@@ -6,14 +6,7 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Unit;
-import net.minecraft.world.item.enchantment.ConditionalEffect;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.effects.EnchantmentValueEffect;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.neoforged.neoforge.common.Tags;
 
-import java.util.List;
 import java.util.function.UnaryOperator;
 
 public interface ModEnchantmentEffectComponents {

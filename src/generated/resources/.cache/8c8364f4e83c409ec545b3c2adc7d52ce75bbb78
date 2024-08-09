@@ -1,4 +1,4 @@
-// 1.21	2024-08-04T14:54:54.5787519	Tags for minecraft:item mod id vanilla
-9ce3c246c23b65f9ac1220cb97f221ee3586abdc data/minecraft/tags/item/enchantable/chest_armor.json
-a460f1f140af1ff9b4522c1da03af26b149f04f7 data/minecraft/tags/item/enchantable/foot_armor.json
+// 1.21	2024-08-04T18:22:45.0411677	Tags for minecraft:item mod id vanilla
+9ce3c246c23b65f9ac1220cb97f221ee3586abdc data/minecraft/tags/item/chest_armor.json
+a460f1f140af1ff9b4522c1da03af26b149f04f7 data/minecraft/tags/item/foot_armor.json
 c7cf40b65e9f80b0da876b8c7ba47601cc2eef92 data/minecraft/tags/item/trimmable_armor.json

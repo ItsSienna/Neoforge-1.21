@@ -1,20 +1,24 @@
 package net.sienna.mccourse.block;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.sienna.mccourse.block.custom.AlexandriteLampBlock;
-import net.sienna.mccourse.block.custom.KohlrabiCropBlock;
-import net.sienna.mccourse.block.custom.SoundBlock;
+import net.sienna.mccourse.block.custom.*;
 import net.sienna.mccourse.item.ModItems;
+import net.sienna.mccourse.sound.ModSounds;
+import net.sienna.mccourse.util.ModWoodTypes;
 
 import java.util.function.Supplier;
 
@@ -80,13 +84,70 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SOUND_BLOCK = registerBlock("sound_block",() -> new SoundBlock(Block.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
 
     //Lamp! This has two blockstates. One lights up, one does not.
-    //The datagen for this is cool - we need to account for two separate blockstates.
-    public static final DeferredBlock<Block> ALEXANDRITE_LAMP = registerBlock("alexandrite_lamp",() -> new AlexandriteLampBlock(Block.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(
+    //The datagen for this is cool - we need to account for two separate blockstates. It also includes our custom sound type for the lamp!
+    public static final DeferredBlock<Block> ALEXANDRITE_LAMP = registerBlock("alexandrite_lamp",() -> new AlexandriteLampBlock(Block.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).sound(ModSounds.ALEXANDRITE_LAMP_SOUNDS).lightLevel(
             state -> state.getValue(AlexandriteLampBlock.CLICKED) ? 15 : 0
             //A ternary!! Basically, if true, return 15, if not, return 0.
     )));
     //Crops! We don't do registerBlock, we use BLOCKS.register (above) because it doesn't have an item associated with it.
     public static final DeferredBlock<Block> KOHLRABI_CROP = BLOCKS.register("kohlrabi_crop", () -> new KohlrabiCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+
+    //Flowers! The flower itself gets "registerBlock", but the potted variant gets a BLOCKS.register, for the same reason as above.
+    public static final DeferredBlock<Block> SNAPDRAGON = registerBlock("snapdragon", () -> new FlowerBlock(MobEffects.BLINDNESS, 5, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
+    public static final DeferredBlock<Block> POTTED_SNAPDRAGON = BLOCKS.register("potted_snapdragon", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SNAPDRAGON, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
+
+    //Custom model block. No occlusion! Remember, registerBlock has a item associated with it, but BLOCKS.register doesn't. (I made this mistake when copying, and the game crashed!)
+    public static final DeferredBlock<Block> GEM_EMPOWERING_STATION = registerBlock("gem_empowering_station", () -> new GemEmpoweringStationBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
+
+    //New wood type!
+    //We need to remember to define the ability to strip a log
+    //Logs are also rotateable! They are technically "rotatable flammable pillar blocks"
+    public static final DeferredBlock<Block> WALNUT_LOG = registerBlock("walnut_log", () -> new ModWoodBlocks(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+    public static final DeferredBlock<Block> WALNUT_WOOD = registerBlock("walnut_wood", () -> new ModWoodBlocks(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final DeferredBlock<Block> STRIPPED_WALNUT_LOG = registerBlock("stripped_walnut_log", () -> new ModWoodBlocks(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+    public static final DeferredBlock<Block> STRIPPED_WALNUT_WOOD = registerBlock("stripped_walnut_wood", () -> new ModWoodBlocks(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
+    //Wood planks! Making this anonymous, but to be honest, I don't really like it? I would probably abstract this because I imagine I'd like to add many wood types :D
+    public static final DeferredBlock<Block> WALNUT_PLANKS = registerBlock("walnut_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 20; //This is just default for planks
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5; //This is just default for planks
+        }
+    });
+    public static final DeferredBlock<Block> WALNUT_LEAVES = registerBlock("walnut_leaves", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 60; //This is just default for leaves
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 30; //This is just default for leaves
+                }
+    });
+    //SAPLING - this is where world gen will be used!
+    public static final DeferredBlock<Block> WALNUT_SAPLING = registerBlock("walnut_sapling", () -> new SaplingBlock(null, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+
+    //Signs? Apparently they need to all be custom classes, oh my god
+    //THEYRE BLOCK ENTITIES. THEY HAVE ITEMS ASSOCIATED WITH THEM. I HATE SIGNS
+    public static final DeferredBlock<Block> WALNUT_SIGN = BLOCKS.register("walnut_sign", () -> new ModStandingSignBlock(ModWoodTypes.WALNUT, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
+    public static final DeferredBlock<Block> WALNUT_WALL_SIGN = BLOCKS.register("walnut_wall_sign", () -> new ModWallSignBlock(ModWoodTypes.WALNUT, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
+    public static final DeferredBlock<Block> WALNUT_HANGING_SIGN = BLOCKS.register("walnut_hanging_sign", () -> new ModHangingSignBlock(ModWoodTypes.WALNUT, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
+    public static final DeferredBlock<Block> WALNUT_WALL_HANGING_SIGN = BLOCKS.register("walnut_wall_hanging_sign", () -> new ModWallHangingSignBlock(ModWoodTypes.WALNUT, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
 
 }

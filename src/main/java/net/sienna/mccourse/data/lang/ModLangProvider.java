@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.ModCreativeModeTabs;
+import net.sienna.mccourse.fluid.ModFluids;
 import net.sienna.mccourse.item.ModItems;
 
 public class ModLangProvider extends LanguageProvider {
@@ -35,6 +36,11 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.ALEXANDRITE_BOOTS, "Alexandrite Boots");
         addItem(ModItems.ALEXANDRITE_HORSE_ARMOR, "Alexandrite Horse Armour");
         addItem(ModItems.KOHLRABI_SEEDS, "Kohlrabi Seeds");
+        addItem(ModItems.BAR_BRAWL_RECORD, "Bar Brawl");
+        addItem(ModItems.RADIATION_STAFF, "Radiation Staff");
+        addItem(ModItems.ALEXANDRITE_BOW, "Alexandrite Bow");
+        addItem(ModItems.ALEXANDRITE_SHIELD, "Alexandrite Shield");
+        addItem(ModFluids.SOAP_WATER_BUCKET, "Soap Water Bucket");
 
         //Blocks
         addBlock(ModBlocks.ALEXANDRITE_BLOCK, "Alexandrite Block");
@@ -54,6 +60,17 @@ public class ModLangProvider extends LanguageProvider {
         addBlock(ModBlocks.ALEXANDRITE_DOOR, "Alexandrite Door");
         addBlock(ModBlocks.ALEXANDRITE_TRAPDOOR, "Alexandrite Trapdoor");
         addBlock(ModBlocks.ALEXANDRITE_LAMP, "Alexandrite Lamp");
+        addBlock(ModBlocks.SNAPDRAGON, "Snapdragon");
+        addBlock(ModBlocks.GEM_EMPOWERING_STATION, "Gem Empowering Station");
+        addBlock(ModFluids.SOAP_WATER_BLOCK, "Soap Water");
+        addBlock(ModBlocks.WALNUT_LEAVES, "Walnut Leaves");
+        addBlock(ModBlocks.WALNUT_PLANKS, "Walnut Planks");
+        addBlock(ModBlocks.WALNUT_LOG, "Walnut Log");
+        addBlock(ModBlocks.WALNUT_WOOD, "Walnut Wood");
+        addBlock(ModBlocks.STRIPPED_WALNUT_WOOD, "Stripped Walnut Wood");
+        addBlock(ModBlocks.STRIPPED_WALNUT_LOG, "Stripped Walnut Log");
+        addBlock(ModBlocks.WALNUT_SAPLING, "Walnut Sapling");
+
 
 
         //Creative mode menu

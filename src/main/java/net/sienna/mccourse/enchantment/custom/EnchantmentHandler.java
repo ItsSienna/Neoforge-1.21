@@ -36,10 +36,10 @@ public class EnchantmentHandler {
             if (!level.isClientSide() && standingOn == Blocks.GRASS_BLOCK.defaultBlockState()) {
                 switch(flowerWalkerLevel){
                     case 1:
-                        ((Player) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1, true, false));
+                        ((Player) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 0, true, false));
                         break;
                     case 2:
-                        ((Player) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 2, true, false));
+                        ((Player) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1, true, false));
                         break;
                 }
             }

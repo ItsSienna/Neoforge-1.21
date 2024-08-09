@@ -1,12 +1,12 @@
 package net.sienna.mccourse.item;
 
-import net.minecraft.client.renderer.entity.layers.HorseArmorLayer;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.item.custom.*;
+import net.sienna.mccourse.sound.ModJukeboxSongs;
 
 import static net.sienna.mccourse.MCCourseMod.MOD_ID;
 /*
@@ -70,5 +70,23 @@ public class ModItems {
 
     //"ItemNameBlockItem" is a blockitem (ie seeds) with a specific item name (ie kohlrabi seeds)
     public static final DeferredItem<Item> KOHLRABI_SEEDS = ITEMS.register("kohlrabi_seeds", () -> new ItemNameBlockItem(ModBlocks.KOHLRABI_CROP.get(), new Item.Properties()));
+
+    //This is a jukebox item. It is a simple item, but uses the .jukeboxPlayable tag under its item properties.
+    public static final DeferredItem<Item> BAR_BRAWL_RECORD = ITEMS.registerSimpleItem("bar_brawl_record", new Item.Properties().jukeboxPlayable(ModJukeboxSongs.BAR_BRAWL));
+
+    //This is the 3D model - its a super simple setup, the literal only thing that changes is the json file comes from BlockBench.
+    //Obviously it doesn't do anything right now - we'd need a custom class for that! Once I can figure out particles, projectiles or hitboxes, I can make a laser maybe??
+    public static final DeferredItem<Item> RADIATION_STAFF = ITEMS.registerSimpleItem("radiation_staff", new Item.Properties());
+
+    //Bow!
+    public static final DeferredItem<Item> ALEXANDRITE_BOW = ITEMS.register("alexandrite_bow", () -> new BowItem(new Item.Properties().stacksTo(1).durability(1024)));
+    //Shield! Uses a 3D model!
+    public static final DeferredItem<Item> ALEXANDRITE_SHIELD = ITEMS.register("alexandrite_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1).durability(1024)));
+
+    //SIGN ITEMS AAAAA
+    public static final DeferredItem<Item> WALNUT_SIGN = ITEMS.register("walnut_sign", () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get()));
+    public static final DeferredItem<Item> WALNUT_HANGING_SIGN = ITEMS.register("walnut_hanging_sign", () -> new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+
+
 
 }

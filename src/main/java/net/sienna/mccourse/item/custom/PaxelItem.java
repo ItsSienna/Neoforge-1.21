@@ -1,9 +1,7 @@
 package net.sienna.mccourse.item.custom;
 
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.level.block.Block;
 import net.sienna.mccourse.util.ModTags;
 
 public class PaxelItem extends DiggerItem {

@@ -1,8 +1,6 @@
 package net.sienna.mccourse.enchantment;
 
 
-import net.minecraft.advancements.critereon.DamageSourcePredicate;
-import net.minecraft.advancements.critereon.TagPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentType;
@@ -11,25 +9,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.item.enchantment.effects.AddValue;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.sienna.mccourse.MCCourseMod;
 
 import static net.sienna.mccourse.MCCourseMod.MOD_ID;
 
@@ -47,12 +35,12 @@ public class ModEnchantments {
         HolderGetter<Block> blockHolderGetter = context.lookup(Registries.BLOCK);
 
         register(context, FLOWER_WALKER,
-                Enchantment.enchantment(Enchantment.definition(itemHolderGetter.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
+                Enchantment.enchantment(Enchantment.definition(itemHolderGetter.getOrThrow(ItemTags.FOOT_ARMOR),
                         1, 2, Enchantment.constantCost(25), Enchantment.constantCost(50),
                         8, new EquipmentSlotGroup[]{EquipmentSlotGroup.FEET}))
                         .withEffect(ModEnchantmentEffectComponents.FLOWER_WALKER));
         register(context, LIGHTNING_STRIKER,
-                Enchantment.enchantment(Enchantment.definition(itemHolderGetter.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
+                Enchantment.enchantment(Enchantment.definition(itemHolderGetter.getOrThrow(ItemTags.CHEST_ARMOR),
                                 1, 2, Enchantment.constantCost(25), Enchantment.constantCost(50),
                                 8, new EquipmentSlotGroup[]{EquipmentSlotGroup.CHEST}))
                         .withEffect(ModEnchantmentEffectComponents.LIGHTNING_STRIKER));

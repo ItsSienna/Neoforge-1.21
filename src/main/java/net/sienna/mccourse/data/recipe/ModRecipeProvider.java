@@ -7,11 +7,9 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.fml.common.Mod;
 import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.item.ModItems;
 

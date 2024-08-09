@@ -4,12 +4,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
-import net.sienna.mccourse.item.ModItems;
 import net.sienna.mccourse.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
@@ -82,6 +80,16 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ALEXANDRITE_WALL.get());
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
+
+        tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.WALNUT_LOG.get())
+                .add(ModBlocks.WALNUT_WOOD.get())
+                .add(ModBlocks.STRIPPED_WALNUT_WOOD.get())
+                .add(ModBlocks.STRIPPED_WALNUT_LOG.get());
+
+        tag(BlockTags.PLANKS)
+                .add(ModBlocks.WALNUT_PLANKS.get());
+
 
     }
 }

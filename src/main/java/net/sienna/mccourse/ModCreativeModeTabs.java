@@ -7,6 +7,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sienna.mccourse.block.ModBlocks;
+import net.sienna.mccourse.fluid.ModFluids;
 import net.sienna.mccourse.item.ModItems;
 
 public class ModCreativeModeTabs {
@@ -40,6 +41,12 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.ALEXANDRITE_LEGGINGS.get());
                 output.accept(ModItems.ALEXANDRITE_HORSE_ARMOR.get());
                 output.accept(ModItems.KOHLRABI_SEEDS.get());
+                output.accept(ModItems.BAR_BRAWL_RECORD.get());
+                output.accept(ModItems.RADIATION_STAFF.get());
+                output.accept(ModItems.ALEXANDRITE_BOW.get());
+                output.accept(ModItems.ALEXANDRITE_SHIELD.get());
+                output.accept(ModFluids.SOAP_WATER_BUCKET.get());
+
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MODCOURSE_BLOCKS = CREATIVE_MODE_TABS.register(modcourse_creative_mode_blocks, () -> CreativeModeTab.builder()
@@ -63,6 +70,17 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.ALEXANDRITE_DOOR.get());
                 output.accept(ModBlocks.ALEXANDRITE_TRAPDOOR.get());
                 output.accept(ModBlocks.ALEXANDRITE_LAMP.get());
+                output.accept(ModBlocks.SNAPDRAGON.get());
+                output.accept(ModBlocks.GEM_EMPOWERING_STATION.get());
+                output.accept(ModBlocks.WALNUT_WOOD.get());
+                output.accept(ModBlocks.WALNUT_LOG.get());
+                output.accept(ModBlocks.WALNUT_LEAVES.get());
+                output.accept(ModBlocks.WALNUT_PLANKS.get());
+                output.accept(ModBlocks.STRIPPED_WALNUT_LOG.get());
+                output.accept(ModBlocks.STRIPPED_WALNUT_WOOD.get());
+                output.accept(ModBlocks.WALNUT_SAPLING.get());
+                output.accept(ModBlocks.WALNUT_SIGN.get());
+                output.accept(ModBlocks.WALNUT_HANGING_SIGN.get());
             }).build());
 
 }

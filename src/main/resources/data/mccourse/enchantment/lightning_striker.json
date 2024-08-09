@@ -7,14 +7,14 @@
     "base": 82,
     "per_level_above_first": 0
   },
-  "max_level": 1,
+  "max_level": 2,
   "min_cost": {
     "base": 32,
     "per_level_above_first": 0
   },
   "slots": [
-    "any"
+    "chest"
   ],
-  "supported_items": "#minecraft:enchantable/chest_armor",
+  "supported_items": "#minecraft:chest_armor",
   "weight": 2
 }

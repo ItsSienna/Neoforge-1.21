@@ -5,20 +5,16 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.block.custom.AlexandriteLampBlock;
 import net.sienna.mccourse.block.custom.KohlrabiCropBlock;
 
-import javax.annotation.Nullable;
 import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -65,8 +61,59 @@ public class ModBlockStateProvider extends BlockStateProvider {
         //only one because I only have one lamp :)
         customLamp();
 
+        //Flower! Basically just tells the game to create a cross of two textures (they're both the same) and render them in a cutout.
+        simpleBlockWithItem(ModBlocks.SNAPDRAGON.get(),
+                models().cross(blockTexture(ModBlocks.SNAPDRAGON.get()).getPath(), blockTexture(ModBlocks.SNAPDRAGON.get())).renderType("cutout"));
+
         makeCrop((KohlrabiCropBlock) ModBlocks.KOHLRABI_CROP.get(), "kohlrabi_stage", "kohlrabi_stage");
 
+        //Use horizontalBlock for a facing block (not like a dispenser, more like a crafting station)
+        horizontalBlock(ModBlocks.GEM_EMPOWERING_STATION.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/gem_empowering_station")));
+
+        //Main log is a log block
+        logBlock((RotatedPillarBlock) ModBlocks.WALNUT_LOG.get());
+        //Wood is an axisblock
+        axisBlock((RotatedPillarBlock) ModBlocks.WALNUT_WOOD.get(), blockTexture(ModBlocks.WALNUT_LOG.get()), blockTexture(ModBlocks.WALNUT_LOG.get()));
+        //Stripped log, for some reason, is also an axis block. It takes the parameter for walnut log and the log top
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_WALNUT_LOG.get(), ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "block/stripped_walnut_log"),
+                ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "block/stripped_walnut_log_top"));
+        //Stripped wood is also just as aids??? Even though its a NORMAL BLOCK?????
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_WALNUT_WOOD.get(), ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "block/stripped_walnut_log"),
+                ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "block/stripped_walnut_log"));
+        blockItem(ModBlocks.WALNUT_LOG.get());
+        blockItem(ModBlocks.WALNUT_WOOD.get());
+        blockItem(ModBlocks.STRIPPED_WALNUT_WOOD.get());
+        blockItem(ModBlocks.STRIPPED_WALNUT_LOG.get());
+        //Luckily, planks are normal
+        normalBlock(ModBlocks.WALNUT_PLANKS.get());
+        //Leaves are not normal but not terrible
+        leavesBlock(ModBlocks.WALNUT_LEAVES);
+        //Saplings are a little weird but not very weird
+        saplingBlock(ModBlocks.WALNUT_SAPLING);
+        //Signs
+        //THESE TWO LINES ARE WHAT IS NOT WORKING
+
+        signBlock((StandingSignBlock) ModBlocks.WALNUT_SIGN.get(), (WallSignBlock) ModBlocks.WALNUT_WALL_SIGN.get(), blockTexture(ModBlocks.WALNUT_PLANKS.get()));
+        hangingSignBlock(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(), blockTexture(ModBlocks.WALNUT_PLANKS.get()));
+    }
+    //SIGN
+    public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {
+        ModelFile sign = models().sign(name(signBlock), texture);
+        hangingSignBlock(signBlock, wallSignBlock, sign);
+    }
+    //SIGN
+    public void hangingSignBlock(Block signBlock, Block wallSignBlock, ModelFile sign) {
+        simpleBlock(signBlock, sign);
+        simpleBlock(wallSignBlock, sign);
+    }
+    //SIGN
+    private String name(Block block) {
+        return key(block).getPath();
+    }
+    //SIGN AGAIN JESUS CHRIST
+    private ResourceLocation key(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     //This is for specifically cube blocks
@@ -76,6 +123,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(block, models().cubeAll(path, modLoc("block/" + path)));
         simpleBlockItem(block, models().getExistingFile(modLoc("block/" + path)));
     }
+
 
     //This is for everything else - the benefit of splitting these two out is that for cubes (the vast majority) you only need to write one line of code
     //vs the two you need for stairs and slabs (one for their in-game model, one for their item)
@@ -88,6 +136,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKey(block);
         String path = blockKey.getPath();
         simpleBlockItem(block, models().getExistingFile(modLoc("block/" + path + appendix)));
+    }
+
+    //This is for saplings
+    private void saplingBlock(DeferredBlock<Block> block) {
+        simpleBlock(block.get(),
+                models().cross(BuiltInRegistries.BLOCK.getKey(block.get()).getPath(), blockTexture(block.get())).renderType("cutout"));
+    }
+    //This is for leaves - technically they also have a cutout (transparency)
+    private void leavesBlock(DeferredBlock<Block> block) {
+        simpleBlock(block.get(),
+                models().cubeAll(BuiltInRegistries.BLOCK.getKey(block.get()).getPath(), blockTexture(block.get())).renderType("cutout"));
+        simpleBlockItem(block.get(), models().getExistingFile(modLoc("block/" + block.getId().getPath())));
     }
 
     //This is for lamp blocks. It basically points to two different places depending on the BlockState's booleanproperty.
@@ -122,5 +182,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         return models;
     }
+
+
 
 }
