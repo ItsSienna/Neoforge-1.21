@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.sienna.mccourse.MCCourseMod;
 import net.sienna.mccourse.block.ModBlocks;
 import net.sienna.mccourse.ModCreativeModeTabs;
+import net.sienna.mccourse.entity.ModEntities;
 import net.sienna.mccourse.fluid.ModFluids;
 import net.sienna.mccourse.item.ModItems;
 
@@ -41,6 +42,10 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.ALEXANDRITE_BOW, "Alexandrite Bow");
         addItem(ModItems.ALEXANDRITE_SHIELD, "Alexandrite Shield");
         addItem(ModFluids.SOAP_WATER_BUCKET, "Soap Water Bucket");
+        addItem(ModItems.RHINO_SPAWN_EGG, "Rhino Spawn Egg");
+        addItem(ModItems.WALNUT_HANGING_SIGN, "Walnut Hanging Sign");
+        addItem(ModItems.WALNUT_SIGN, "Walnut Sign");
+        addItem(ModItems.DICE, "Dice");
 
         //Blocks
         addBlock(ModBlocks.ALEXANDRITE_BLOCK, "Alexandrite Block");
@@ -70,6 +75,7 @@ public class ModLangProvider extends LanguageProvider {
         addBlock(ModBlocks.STRIPPED_WALNUT_WOOD, "Stripped Walnut Wood");
         addBlock(ModBlocks.STRIPPED_WALNUT_LOG, "Stripped Walnut Log");
         addBlock(ModBlocks.WALNUT_SAPLING, "Walnut Sapling");
+        addEntityType(ModEntities.RHINO, "Rhino");
 
 
 
@@ -78,5 +84,6 @@ public class ModLangProvider extends LanguageProvider {
         add(ModCreativeModeTabs.modcourse_creative_mode_items, "Mod Course Items");
 
         add("item.mccourse.metaldetector.no.valuables", "No valuables detected.");
+
     }
 }

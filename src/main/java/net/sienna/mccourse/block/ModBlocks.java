@@ -154,5 +154,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WALNUT_HANGING_SIGN = BLOCKS.register("walnut_hanging_sign", () -> new ModHangingSignBlock(ModWoodTypes.WALNUT, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
     public static final DeferredBlock<Block> WALNUT_WALL_HANGING_SIGN = BLOCKS.register("walnut_wall_hanging_sign", () -> new ModWallHangingSignBlock(ModWoodTypes.WALNUT, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
+    public static final DeferredBlock<Block> DICE_BLOCK = BLOCKS.register("dice_block", () -> new DiceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).noLootTable()));
+
 
 }

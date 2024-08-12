@@ -5,6 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -26,6 +28,9 @@ import net.sienna.mccourse.block.entity.ModBlockEntities;
 import net.sienna.mccourse.data.DataGenerators;
 import net.sienna.mccourse.effect.ModEffects;
 import net.sienna.mccourse.enchantment.ModEnchantments;
+import net.sienna.mccourse.entity.ModEntities;
+import net.sienna.mccourse.entity.client.MagicProjectileRenderer;
+import net.sienna.mccourse.entity.client.RhinoRenderer;
 import net.sienna.mccourse.fluid.BaseFluidType;
 import net.sienna.mccourse.fluid.ModFluidTypes;
 import net.sienna.mccourse.fluid.ModFluids;
@@ -69,6 +74,7 @@ public class MCCourseMod {
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
@@ -119,6 +125,11 @@ public class MCCourseMod {
 
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
+
+                //MOBS GO HERE
+                EntityRenderers.register(ModEntities.RHINO.get(), RhinoRenderer::new);
+                EntityRenderers.register(ModEntities.DICE_PROJECTIlE.get(), ThrownItemRenderer::new);
+                EntityRenderers.register(ModEntities.MAGIC_PROJECTILE.get(), MagicProjectileRenderer::new);
             });
         }
 

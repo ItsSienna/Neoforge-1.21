@@ -5,6 +5,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sienna.mccourse.block.ModBlocks;
+import net.sienna.mccourse.entity.ModEntities;
 import net.sienna.mccourse.item.custom.*;
 import net.sienna.mccourse.sound.ModJukeboxSongs;
 
@@ -76,7 +77,7 @@ public class ModItems {
 
     //This is the 3D model - its a super simple setup, the literal only thing that changes is the json file comes from BlockBench.
     //Obviously it doesn't do anything right now - we'd need a custom class for that! Once I can figure out particles, projectiles or hitboxes, I can make a laser maybe??
-    public static final DeferredItem<Item> RADIATION_STAFF = ITEMS.registerSimpleItem("radiation_staff", new Item.Properties());
+    public static final DeferredItem<Item> RADIATION_STAFF = ITEMS.register("radiation_staff",() -> new RadiationStaffItem(new Item.Properties().durability(1000)));
 
     //Bow!
     public static final DeferredItem<Item> ALEXANDRITE_BOW = ITEMS.register("alexandrite_bow", () -> new BowItem(new Item.Properties().stacksTo(1).durability(1024)));
@@ -86,6 +87,10 @@ public class ModItems {
     //SIGN ITEMS AAAAA
     public static final DeferredItem<Item> WALNUT_SIGN = ITEMS.register("walnut_sign", () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get()));
     public static final DeferredItem<Item> WALNUT_HANGING_SIGN = ITEMS.register("walnut_hanging_sign", () -> new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+    //SpawnEgg
+    public static final DeferredItem<Item> RHINO_SPAWN_EGG = ITEMS.register("rhino_spawn_egg", () -> new SpawnEggItem(ModEntities.RHINO.get(), 0x7e9680, 0xc5d1c5, new Item.Properties().stacksTo(16)));
+    //Throwable item
+    public static final DeferredItem<Item> DICE = ITEMS.register("dice", () -> new DiceItem(new Item.Properties()));
 
 
 

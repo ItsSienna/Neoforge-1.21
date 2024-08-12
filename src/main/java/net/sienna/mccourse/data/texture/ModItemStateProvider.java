@@ -46,6 +46,7 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ModItems.ALEXANDRITE_BOOTS.get());
         item(ModItems.ALEXANDRITE_HORSE_ARMOR.get());
         item(ModItems.BAR_BRAWL_RECORD.get());
+        item(ModItems.DICE.get());
 
 
         //Handheld items
@@ -74,6 +75,9 @@ public class ModItemStateProvider extends ItemModelProvider {
 
         //Sapling
         saplingItem(ModBlocks.WALNUT_SAPLING);
+
+        //Spawn egg
+        withExistingParent(ModItems.RHINO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     private void trimmedArmour(Item item) {

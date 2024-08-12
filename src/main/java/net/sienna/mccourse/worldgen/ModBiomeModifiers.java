@@ -6,11 +6,16 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.sienna.mccourse.MCCourseMod;
+import net.sienna.mccourse.entity.ModEntities;
+
+import java.util.List;
 
 public class ModBiomeModifiers {
     //Third verse same as the second and the first
@@ -22,6 +27,9 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_END_ALEXANDRITE_ORE = registerKey("add_end_alexandrite_ore");
 
     public static final ResourceKey<BiomeModifier> ADD_SNAPDRAGON = registerKey("add_snapdragon");
+
+    //Getting entities to spawn comes here
+    public static final ResourceKey<BiomeModifier> SPAWN_RHINO = registerKey("spawn_rhino");
 
     public static ResourceKey<BiomeModifier> registerKey(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, name));
@@ -61,6 +69,11 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SNAPDRAGON_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        //Entities!
+        context.register(SPAWN_RHINO, new BiomeModifiers.AddSpawnsBiomeModifier(
+                biomes.getOrThrow(Tags.Biomes.IS_DRY), //Weight determines how likely a rhino will spawn. Minimum in a group of 1, maximum is 3.
+                List.of(new MobSpawnSettings.SpawnerData(ModEntities.RHINO.get(), 20, 1, 3))));
 
     }
 }
