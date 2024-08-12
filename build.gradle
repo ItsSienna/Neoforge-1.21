@@ -110,6 +110,7 @@ dependencies {
 
     // Example mod dependency using a file as dependency
     // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
+    implementation files("com.github.glitchfiend:TerraBlender-forge:1.21-4.0.0.1")
 
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
@@ -135,7 +136,7 @@ tasks.withType(ProcessResources).configureEach {
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description        : mod_description,
     ]
     inputs.properties replaceProperties
 

@@ -2,12 +2,14 @@ package net.sienna.mccourse.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -19,7 +21,9 @@ import net.sienna.mccourse.block.custom.*;
 import net.sienna.mccourse.item.ModItems;
 import net.sienna.mccourse.sound.ModSounds;
 import net.sienna.mccourse.util.ModWoodTypes;
+import net.sienna.mccourse.worldgen.ModConfiguredFeatures;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import static net.sienna.mccourse.MCCourseMod.MOD_ID;
@@ -140,7 +144,8 @@ public class ModBlocks {
                 }
     });
     //SAPLING - this is where world gen will be used!
-    public static final DeferredBlock<Block> WALNUT_SAPLING = registerBlock("walnut_sapling", () -> new SaplingBlock(null, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+    //It takes a treegrower which references a "ModConfiguredFeatures" with the key "WALNUT_TREE". This is our regular walnut tree.
+    public static final DeferredBlock<Block> WALNUT_SAPLING = registerBlock("walnut_sapling", () -> new SaplingBlock(new TreeGrower("walnut_tree", Optional.empty(), Optional.of(ModConfiguredFeatures.WALNUT_TREE), Optional.empty()), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
     //Signs? Apparently they need to all be custom classes, oh my god
     //THEYRE BLOCK ENTITIES. THEY HAVE ITEMS ASSOCIATED WITH THEM. I HATE SIGNS

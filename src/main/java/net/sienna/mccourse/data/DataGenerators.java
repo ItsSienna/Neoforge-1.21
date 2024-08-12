@@ -16,6 +16,7 @@ import net.sienna.mccourse.data.tag.ModItemTagProvider;
 import net.sienna.mccourse.data.texture.ModBlockStateProvider;
 import net.sienna.mccourse.data.texture.ModItemStateProvider;
 import net.sienna.mccourse.data.villager.ModPoiTypeTagsProvider;
+import net.sienna.mccourse.data.worldgen.ModWorldGenProvider;
 
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class DataGenerators {
             generator.addProvider(true, new ModPoiTypeTagsProvider(output, event.getLookupProvider(), existingFileHelper));
             generator.addProvider(true, new AdvancementProvider(output, event.getLookupProvider(), existingFileHelper, List.of(new ModAdvancementProvider())));
             generator.addProvider(true, new ModFluidTagProvider(output, event.getLookupProvider(), existingFileHelper));
+            generator.addProvider(true, new ModWorldGenProvider(output, event.getLookupProvider()));
 
     }
 }
